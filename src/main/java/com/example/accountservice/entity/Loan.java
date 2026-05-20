@@ -23,24 +23,23 @@ public class Loan {
 
     private String accountNumber;
 
-    private LocalDateTime createdDate;
+    private BigDecimal amount;
 
-    private LocalDateTime modifiedDate;
+    private BigDecimal remainingAmount;
+
+    private BigDecimal emiAmount;
+
+    private String status;
 
     private String role;
 
     private String remarks;
 
-    private Boolean documentsSubmitted= false;
+    private Boolean documentsSubmitted = false;
 
-    private Boolean documentsVerified= false;
+    private Boolean documentsVerified = false;
 
-   private BigDecimal amount;
+    private LocalDateTime createdDate;
 
-private BigDecimal remainingAmount;
-
-private BigDecimal emiAmount;
-
-private String status;
-
+    private LocalDateTime modifiedDate;
 }

@@ -36,9 +36,9 @@ public class Account {
     @Column(name = "modified_date")
     private LocalDateTime modifiedDate;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-private BigDecimal balance;
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal balance;
 
-@Column(nullable = false, precision = 10, scale = 2)
-private BigDecimal interestRate = new BigDecimal("5.0");
+    @Column(nullable = false, precision = 5, scale = 2)
+    private BigDecimal interestRate = new BigDecimal("5.0");
 }
