@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/loans")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class LoanController {
 
     private final LoanService loanService;
@@ -21,6 +21,15 @@ public class LoanController {
     public Loan applyLoan(@RequestBody Loan loan) {
         return loanService.applyLoan(loan);
     }
+
+  @GetMapping("/customer/{customerId}")
+public List<Loan> getLoansByCustomer(
+        @PathVariable String customerId) {
+
+    System.out.println("LOAN CUSTOMER API HIT");
+
+    return loanService.getLoansByCustomer(customerId);
+}
 
     @GetMapping
     public List<Loan> getAllLoans() {

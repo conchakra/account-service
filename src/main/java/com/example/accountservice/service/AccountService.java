@@ -23,4 +23,6 @@ public interface AccountService {
 
     Account applyInterest(String accountNumber);
 
+    AccountResponseDto getAccountByCustomer(String customerId);
+
 }

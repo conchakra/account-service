@@ -29,4 +29,6 @@ public interface LoanService {
     Loan payEmi(String loanId);
 
     List<Loan> getLoansByAccount(String accountNumber);
+
+    List<Loan> getLoansByCustomer(String customerId);
 }

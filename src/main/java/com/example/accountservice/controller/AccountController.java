@@ -24,6 +24,16 @@ public class AccountController {
         this.accountService = accountService;
     }
 
+   @GetMapping("/customer/{customerId}")
+public ResponseEntity<AccountResponseDto> getAccountByCustomer(
+        @PathVariable String customerId) {
+
+    System.out.println("ACCOUNT CUSTOMER API HIT");
+
+    return ResponseEntity.ok(
+            accountService.getAccountByCustomer(customerId));
+}
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public AccountResponseDto createAccount(

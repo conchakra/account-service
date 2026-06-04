@@ -45,6 +45,13 @@ public class LoanServiceImpl implements LoanService {
     }
 
     @Override
+public List<Loan> getLoansByCustomer(
+        String customerId) {
+
+    return loanRepository.findByCustomerId(customerId);
+}
+
+    @Override
     public Loan applyLoan(Loan loanRequest) {
         String url = "http://localhost:8081/customer/api/v1/customers/" + loanRequest.getCustomerId();
 

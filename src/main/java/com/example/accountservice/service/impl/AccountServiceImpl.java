@@ -159,6 +159,26 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+public AccountResponseDto getAccountByCustomer(
+        String customerId) {
+
+    Account account =
+            accountRepository
+                    .findByCustomerId(customerId)
+                    .orElseThrow(
+                            () -> new RuntimeException(
+                                    "Account not found"));
+
+    return AccountResponseDto.builder()
+            .id(account.getId())
+            .accountNumber(account.getAccountNumber())
+            .customerId(account.getCustomerId())
+            .balance(account.getBalance())
+            .status(account.getStatus())
+            .build();
+}
+
+    @Override
     @Transactional
     public void credit(String accountNumber, BigDecimal amount) {
         AccountBalance balance = accountBalanceRepository
