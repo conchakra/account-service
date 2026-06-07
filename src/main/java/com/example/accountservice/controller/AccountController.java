@@ -3,6 +3,7 @@ package com.example.accountservice.controller;
 import com.example.accountservice.dto.AccountResponseDto;
 import com.example.accountservice.dto.CreateAccountRequestDto;
 import com.example.accountservice.entity.Account;
+import com.example.accountservice.entity.AccountTransaction;
 import com.example.accountservice.service.AccountService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,13 @@ public class AccountController {
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
     }
+
+    @GetMapping("/statement/{accountNumber}")
+public List<AccountTransaction> getAccountStatement(
+        @PathVariable String accountNumber) {
+
+    return accountService.getAccountStatement(accountNumber);
+}
 
    @GetMapping("/customer/{customerId}")
 public ResponseEntity<AccountResponseDto> getAccountByCustomer(

@@ -25,4 +25,6 @@ public interface AccountService {
 
     AccountResponseDto getAccountByCustomer(String customerId);
 
+    List<AccountTransaction> getAccountStatement(String accountNumber);
+
 }

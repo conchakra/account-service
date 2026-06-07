@@ -5,10 +5,12 @@ import com.example.accountservice.entity.Account;
 import com.example.accountservice.entity.AccountBalance;
 import com.example.accountservice.entity.AccountTransaction;
 import com.example.accountservice.entity.Loan;
+import com.example.accountservice.entity.LoanStatement;
 import com.example.accountservice.repository.AccountBalanceRepository;
 import com.example.accountservice.repository.AccountRepository;
 import com.example.accountservice.repository.AccountTransactionRepository;
 import com.example.accountservice.repository.LoanRepository;
+import com.example.accountservice.repository.LoanStatementRepository;
 import com.example.accountservice.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -40,9 +42,14 @@ public class LoanServiceImpl implements LoanService {
     @Autowired
     private AccountTransactionRepository accountTransactionRepository;
 
+    @Autowired
+private LoanStatementRepository loanStatementRepository;
+
     public LoanServiceImpl(LoanRepository loanRepository) {
         this.loanRepository = loanRepository;
     }
+
+
 
     @Override
 public List<Loan> getLoansByCustomer(
@@ -192,6 +199,17 @@ public List<Loan> getLoansByCustomer(
                 .transactionDateTime(LocalDateTime.now())
                 .build();
         accountTransactionRepository.save(txn);
+
+        LoanStatement statement =
+        LoanStatement.builder()
+                .loanId(loan.getId())
+                .accountNumber(loan.getAccountNumber())
+                .amount(emi)
+                .action(BigDecimal.ZERO)
+                .transactionDate(LocalDateTime.now())
+                .build();
+
+loanStatementRepository.save(statement);
 
         loan.setRemainingAmount(loan.getRemainingAmount().subtract(emi));
         if (loan.getRemainingAmount().compareTo(BigDecimal.ZERO) <= 0) {

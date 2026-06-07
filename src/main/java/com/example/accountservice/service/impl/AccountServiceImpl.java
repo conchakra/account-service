@@ -51,6 +51,19 @@ public class AccountServiceImpl implements AccountService {
         this.customerServiceClient = customerServiceClient;
     }
 
+
+    public List<AccountTransaction> getAccountStatement(
+        String accountNumber) {
+
+    LocalDateTime fromDate =
+            LocalDateTime.now().minusMonths(3);
+
+    return accountTransactionRepository
+            .findByAccountNumberAndTransactionDateTimeAfter(
+                    accountNumber,
+                    fromDate);
+}
+
     @Override
     public List<AccountResponseDto> getAllAccounts() {
         return accountRepository.findAll()
