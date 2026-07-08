@@ -1,6 +1,5 @@
 package com.example.accountservice.dto;
 
-import com.example.accountservice.dto.CustomerDTO;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
