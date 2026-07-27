@@ -1,4 +1,4 @@
 application: accountservice
 registry: localhost:5000
-image: accountservice
+image: account-service
 version: 1.0.0
