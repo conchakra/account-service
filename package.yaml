@@ -1,0 +1,4 @@
+application: accountservice
+registry: localhost:5000
+image: accountservice
+version: 1.0.0
